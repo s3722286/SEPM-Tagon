@@ -34,7 +34,21 @@ session_start();
    <head>
      <title>Register</title>
    </head>
-    <form name="registerForm" method="post">
+    
+    <script src="sha256.js"></script>
+    <script type="text/javascript">
+        //use SHA256 to hash password before sending to server.
+        function hashPass() {
+            var inputPass = document.getElementById('regPassword').value;
+            var hashedPass = SHA256.hash(inputPass);
+
+            document.getElementById('regPassword').innerHTML = hashedPass;
+            document.getElementById('regPassword').value = hashedPass;
+
+        }
+        </script>
+    
+    <form name="registerForm" onsubmit="return hashPass()" method="post" >
 
         <p>UserID:<input type="text" id="regUserID" name="regUserID"></p>
         <p>Password:<input type="password" id="regPassword" name="regPassword"></p><br>

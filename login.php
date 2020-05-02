@@ -37,11 +37,26 @@ session_start();
    <head>
      <title>Login</title>
    </head>
-    <form name="loginForm" method="post">
+    
+    <script src="sha256.js"></script>
+    <script type="text/javascript">
+        //use SHA256 to hash password before sending to server.
+        function hashPass() {
+            var inputPass = document.getElementById('password').value;
+            var hashedPass = SHA256.hash(inputPass);
+
+            document.getElementById('password').innerHTML = hashedPass;
+            document.getElementById('password').value = hashedPass;
+
+        }
+        </script>
+    
+    <form name="loginForm" onsubmit="return hashPass()" method="post">
 
         <p>UserID:<input type="text" id="userID" name="userID"></p><br>
         <p>Password:<input type="password" id="password" name="password"></p><br>
-        <a><input type="submit"  value="Login"></a><a href="register.php">Register<a>
+        <a><input type="submit"  value="Login"></a>
+        <a href="register.php">Register<a>
 
     </form>
 
