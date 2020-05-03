@@ -14,21 +14,14 @@ if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 
-// Create user table
-$sql = "CREATE TABLE Users (
-userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-email VARCHAR(50) NOT NULL,
-pass VARCHAR(30) NOT NULL,
-reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)";
+// Data to delete
+$sql = "DELETE FROM MyGuests WHERE id=$userID";
 
-// Create DB
-$sql = "CREATE DATABASE clientDB";
 if ($connection->query($sql) === TRUE) {
-    echo "Table created";
+    echo "User deleted";
 }
 else {
-    echo "Error creating Table: " . $connection->error;
+    echo "Error deleting user: " . $sql . "<br>" . $connection->error;
 }
 
 $connection->close();
