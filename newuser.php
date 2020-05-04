@@ -6,7 +6,7 @@ session_start();
 //very much not final and barebones but I have to do the same thing for three assignments ok??
    
   //checks if userID, password was set via form below and that they are not blank.
-  if(isset($_POST['regUserID']) && isset($_POST['regPassword']) && strlen($_POST['regUserID']) && strlen($_POST['regPassword'])){
+  if(isset($_POST['regUserID']) && isset($_POST['regPassword']) && strlen($_POST['regUserID']) && strlen($_POST['regPassword']) && !empty($_POST['pressedRegister'])){
     $regUserid= $_POST['regUserID'];
     $regPassword= $_POST['regPassword'];
     $regString= $regUserid . ',' . $regPassword . '.';
@@ -23,12 +23,17 @@ session_start();
     
 
    //if user pressed register button without inputing valid name/password then they are warned.
-  }else if(isset($_POST['pressedRegister'])){
+  }else if(isset($_POST['pressedRegister']) && !empty($_POST['pressedRegister'])){
         
-        echo 'Username or password cannot be empty';
-        unset($_POST['pressedRegister']);
+    echo 'Username or password cannot be empty';
+    unset($_POST['pressedRegister']);
 
-        }
+  }else{
+	  
+	echo 'User creation was canceled';
+	unset($_POST['pressedRegister']);
+	
+  }
 ?>
 
 <main>
@@ -52,15 +57,15 @@ session_start();
         // If the user clicks "Cancel" the page, the user will remain on the register page
 
         //The cancel function redirects to the main page *Can either leave it like that or we need to fix it*
-        //When 'cancel' is selected from the pop up box, the user info will still be stored in the users.txt file so need to fix that
+
         function confirmation() 
         {
-            if(window.confirm("Do you really want to leave?")) 
+            if(window.confirm("Do you really want to create this user?")) 
             { 
                 hashPass();
-            }
-            else{
-                die();
+            }else{
+                document.getElementById('pressedRegister').innerHTML = 0;
+                document.getElementById('pressedRegister').value = 0;
             }
             
         }
