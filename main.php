@@ -24,5 +24,6 @@ session_start();
     <form name="logoutForm" method="post">
         <input type="hidden" id="Logout" name="Logout" value="1">
         <a><input type="submit" value="Logout"></a>
+        <a href="newuser.php">Create New User<a>
     </form>
 </body>
