@@ -1,5 +1,6 @@
 <?php
 session_start();
+//include_once('initDB.php');
 
 // Login/Register system based on Artem's previous work for assignment 1 for Cloud Computing.
 

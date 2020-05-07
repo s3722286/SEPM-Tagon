@@ -3,24 +3,24 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+-- SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+-- SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+-- SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema sempdatabase
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema sempdatabase
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `sempdatabase` DEFAULT CHARACTER SET utf8 ;
+USE `sempdatabase`;
 
 -- -----------------------------------------------------
--- Table `mydb`.`users`
+-- Table `sempdatabase`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`users` (
+CREATE TABLE IF NOT EXISTS `sempdatabase`.`users` (
   `userID` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `userName` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -32,9 +32,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Locations`
+-- Table `sempdatabase`.`Locations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Locations` (
+CREATE TABLE IF NOT EXISTS `sempdatabase`.`Locations` (
   `locationID` INT NOT NULL AUTO_INCREMENT,
   `locationName` VARCHAR(45) NOT NULL,
   `xCoordinate` VARCHAR(45) NOT NULL,
@@ -42,11 +42,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Locations` (
   `description` VARCHAR(1024) NOT NULL,
   `minTime` INT NOT NULL,
   PRIMARY KEY (`locationID`),
-  UNIQUE INDEX `locationID_UNIQUE` (`locationID` ASC) VISIBLE,
-  UNIQUE INDEX `locationName_UNIQUE` (`locationName` ASC) VISIBLE)
+  UNIQUE INDEX `locationID_UNIQUE` (`locationID` ASC),
+  UNIQUE INDEX `locationName_UNIQUE` (`locationName` ASC))
 ENGINE = InnoDB;
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- SET SQL_MODE=@OLD_SQL_MODE;
+-- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+-- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
