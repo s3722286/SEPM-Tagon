@@ -23,7 +23,7 @@ USE `sempdatabase`;
 CREATE TABLE IF NOT EXISTS `sempdatabase`.`users` (
   `userID` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `userName` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `userType` VARCHAR(45) NOT NULL DEFAULT 'Assistant',
   PRIMARY KEY (`userID`),
   UNIQUE INDEX `userID_UNIQUE` (`userID` ASC) VISIBLE,

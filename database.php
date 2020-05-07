@@ -33,7 +33,20 @@ function init(){
     $connection->close();
 }
 
-function createUser($userName,$password){
+function canCreateUser($username,$connection){
+    
+    // Check if username already exists
+    $sql = "SELECT * FROM sempdatabase.users WHERE username='$username'";
+
+    if ($connection->query($sql) !== FALSE && $connection->affected_rows == 0) {
+        return TRUE;
+    }else {
+        return FALSE;
+    }
+
+}
+
+function createUser($username,$password){
     // Establish connection
     $connection = connect();
 
@@ -44,16 +57,30 @@ function createUser($userName,$password){
 
     // Data to insert
     $sql = "INSERT INTO sempdatabase.users (userName, password)
-    VALUES ('$userName', '$password')";
+    VALUES ('$username', '$password')";
 
-    if ($connection->query($sql) === TRUE) {
-        echo "New user created";
-    }
-    else {
-        echo "Error creating user: " . $sql . "<br>" . $connection->error;
+    if (canCreateUser($username,$connection) === TRUE && $connection->query($sql) === TRUE) {
+        return TRUE;
+        
+    }else {
+        return FALSE;
     }
 
     $connection->close();
+}
+
+function validateLogin($username,$password){
+    
+    $connection = connect();
+    $sql = "SELECT * FROM sempdatabase.users WHERE username='$username' AND password='$password'";
+    //var_dump($connection->query($sql));
+    
+    if ($connection->query($sql) !== FALSE && $connection->affected_rows == 1) {
+        return TRUE;
+    }else {
+        return FALSE;
+    }
+
 }
 
 function deleteUser($userID){
@@ -81,6 +108,8 @@ function deleteUser($userID){
 
 //initalise database to make sure that the schema and tables exist
 init();
-createUser("Name","Password");
+//createUser("admin","fakepass");
+//echo validateLogin("amin","fakepass");
+//deleteUser("1");
 ?>
 

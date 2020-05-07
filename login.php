@@ -1,6 +1,7 @@
 <?php
 session_start();
 //include_once('initDB.php');
+require_once './database.php';
 
 // Login/Register system based on Artem's previous work for assignment 1 for Cloud Computing.
 
@@ -9,29 +10,23 @@ session_start();
    //if logging out then clear session variables used for login
   if(isset($_GET['logOut'])){
     unset($_GET['logOut']);
-    unset($_SESSION['userID']);
+    unset($_SESSION['username']);
   }
 
-  if(isset($_POST['userID']) && isset($_POST['password'])){
-    $userid= $_POST['userID'];
+  if(isset($_POST['username']) && isset($_POST['password'])){
+    $username= $_POST['username'];
     $password= $_POST['password'];
-    $loginString= $userid . ',' . $password;
-	
-	//turns userfile into an array of usernames and passwords separated by a comma
-    $users= explode(".",file_get_contents('users.txt'));
-    $arraylength = count($users);
-	
-    //searches though array of username/password strings until something matches.
-	for($i=0;$i<$arraylength;$i++){
 
-          if($users[$i] == $loginString){
-             $_SESSION['userID']=$userid;
-             header("Location: main.php"); 
-           }
-        }
-      //if user is not redirected then it is assumed that they input wrong password.
-      echo '<p>Username or password is invalid</p>';
-  }
+      if(validateLogin($username,$password) == TRUE){
+          echo validateLogin($username,$password);
+         $_SESSION['username'] = $username;
+         header("Location: main.php"); 
+       }else{
+          echo '<p>Username or password is invalid</p>';
+      }
+      
+    }
+      
 ?>
 
 <main>
@@ -54,7 +49,7 @@ session_start();
     
     <form name="loginForm" onsubmit="return hashPass()" method="post">
 
-        <p>UserID:<input type="text" id="userID" name="userID"></p><br>
+        <p>username:<input type="text" id="username" name="username"></p><br>
         <p>Password:<input type="password" id="password" name="password"></p><br>
         <a><input type="submit"  value="Login"></a>
         <a href="register.php">Register<a>
