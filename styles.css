@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(62, 146, 174);
+    margin-top: 15%;
+    margin-right: 40%;
+    margin-left: 40%;
+
+}
+h2 {
+    text-align: center;
+    color: black;
+    text-transform: capitalize;
+}
+form {
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+}

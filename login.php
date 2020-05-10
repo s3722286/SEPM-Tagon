@@ -30,10 +30,10 @@ require_once './database.php';
 ?>
 
 <main>
-   <head>
-     <title>Login</title>
-   </head>
-    
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+  </head>
     <script src="sha256.js"></script>
     <script type="text/javascript">
         //use SHA256 to hash password before sending to server.
@@ -46,13 +46,14 @@ require_once './database.php';
 
         }
         </script>
-    
+
+    <h2>Login</h2>
     <form name="loginForm" onsubmit="return hashPass()" method="post">
 
-        <p>username:<input type="text" id="username" name="username"></p><br>
-        <p>Password:<input type="password" id="password" name="password"></p><br>
+        <p>Username: <input type="text" id="username" name="username"></p>
+        <p>Password: <input type="password" id="password" name="password"></p><br>
         <a><input type="submit"  value="Login"></a>
-        <a href="register.php">Register<a>
+        <a href="newuser.php">Register<a>
 
     </form>
 

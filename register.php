@@ -31,10 +31,11 @@ session_start();
 ?>
 
 <main>
-   <head>
-     <title>Register</title>
-   </head>
-    
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Register</title>
+    </head>
+    <link rel="stylesheet" href="styles.css">
     <script src="sha256.js"></script>
     <script type="text/javascript">
         //use SHA256 to hash password before sending to server.

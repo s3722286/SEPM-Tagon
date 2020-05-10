@@ -36,10 +36,10 @@ require_once './database.php';
 ?>
 
 <main>
-   <head>
-     <title>Register</title>
-   </head>
-    
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
     <script src="sha256.js"></script>
     <script type="text/javascript">
         //use SHA256 to hash password before sending to server.
@@ -71,11 +71,11 @@ require_once './database.php';
 
 
         </script>
-    
+    <h2>Register</h2>
     <form name="registerForm" onsubmit=confirmation() method="post" >
 
-        <p>UserID:<input type="text" id="regUsername" name="regUsername"></p>
-        <p>Password:<input type="password" id="regPassword" name="regPassword"></p><br>
+        <p>UserID: <input type="text" id="regUsername" name="regUsername"></p>
+        <p>Password: <input type="password" id="regPassword" name="regPassword"></p><br>
         <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
         <a><input type="submit" value="Create new account"></a>
         <a href="main.php">Back<a>
