@@ -1,7 +1,5 @@
 <?php
 
-
-
 ?>
 
 <main>
@@ -11,11 +9,7 @@
     <script type="text/javascript">
         //use SHA256 to hash password before sending to server.
         function editUser() {
-            var inputPass = document.getElementById('regPassword').value;
-            var hashedPass = SHA256.hash(inputPass);
-
-            document.getElementById('regPassword').innerHTML = hashedPass;
-            document.getElementById('regPassword').value = hashedPass;
+            
         }
     </script>
     
