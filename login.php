@@ -49,12 +49,20 @@ require_once './database.php';
 
     <h2>Login</h2>
     <form name="loginForm" onsubmit="return hashPass()" method="post">
-
-        <p>Username: <input type="text" id="username" name="username"></p>
-        <p>Password: <input type="password" id="password" name="password"></p><br>
-        <a><input type="submit"  value="Login"></a>
-        <a href="newuser.php">Register<a>
-
+    <feildset class ='login_form'>
+      <div class="row">
+        <label class="fixedwidth">Username:</label>
+        <input type="text" name="username" required />
+      </div>
+      <div class="row">
+        <label class="fixedwidth">Password:</label>
+        <input type="password" name="password" required />
+      </div>
+      <div class="row">
+        <input type="submit" name="submit" value="Login" />
+        <a href="newuser.php">Signup</a>
+      </div>
+    </feildset>
     </form>
 
 </main>
