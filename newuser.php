@@ -12,7 +12,8 @@ require_once './database.php';
     $regPassword= $_POST['regPassword'];
       
      if(createUser($regUsername, $regPassword)){
-        echo "Successfully created new account with the username of: $regUsername"; 
+        echo "Successfully created new account with the username of: $regUsername";
+        header("Location: login.php");
      }else{
         echo "Error: Failed to create user. An account with the username of $regUsername already exists."; 
      }
@@ -27,10 +28,10 @@ require_once './database.php';
     echo 'Username or password cannot be empty';
     unset($_POST['pressedRegister']);
 
-  }else{
-	  
-	echo 'User creation was canceled';
-	unset($_POST['pressedRegister']);
+  }
+  else {
+	  echo 'User creation was canceled';
+	  unset($_POST['pressedRegister']);
 	
   }
 ?>
@@ -71,14 +72,26 @@ require_once './database.php';
 
 
         </script>
-    <h2>Register</h2>
-    <form name="registerForm" onsubmit=confirmation() method="post" >
-
-        <p>UserID: <input type="text" id="regUsername" name="regUsername"></p>
-        <p>Password: <input type="password" id="regPassword" name="regPassword"></p><br>
-        <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
-        <a><input type="submit" value="Create new account"></a>
-        <a href="main.php">Back<a>
-
+    <form name="registerForm" onsubmit=confirmation() method="post" enctype="multipart/form-data">
+      <h2>Register</h2>
+      <feildset class ='login_form'>
+        <div class="row">
+          <label class="fixedwidth">Username:</label>
+          <input type="text" id="regUsername" name="regUsername" required />
+        </div>
+        <div class="row">
+          <label class="fixedwidth">Password:</label>
+          <input type="password" id="regPassword" name="regPassword" required />
+        </div>
+        <div class="row">
+          <label class="fixedwidth">Admin:</label>
+          <input type="checkbox" name="admin" value="admin" />
+        </div>
+        <div class="row">
+          <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
+          <input type="submit" name="submit" value="Create New Account" />
+          <a href="main.php">Back<a>
+        </div>
+      </feildset>
     </form>
 </main>
