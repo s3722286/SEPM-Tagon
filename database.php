@@ -83,6 +83,18 @@ function validateLogin($username,$password){
 
 }
 
+function get_all_users(){
+    $connection = connect();
+    $query='SELECT * FROM sempdatabase.users';   		
+	$result=mysqli_query($connection, $query);
+	$count=mysqli_num_rows($result);
+	
+	for($i=0;$i<$count;$i++) {
+	    $row[$i]=mysqli_fetch_array($result);
+	}
+}
+
+
 function deleteUser($userID){
     
     // Establish connection

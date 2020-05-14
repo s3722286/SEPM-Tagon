@@ -1,3 +1,7 @@
+<?php
+    
+?>
+
 <main>
     <head>
         <link rel="stylesheet" href="styles.css">
@@ -12,10 +16,9 @@
     <form name="user-editForm" onsubmit="return editUser()" method="post" >
     <label for="users">Select User:</label>
     <select id="users">
+        <option value = get_all_users()></option>
         <?php
-            $query = mysql_query("SELECT username FROM users");
-            while($rowtwo = mysql_fetch_array($query)){
-            }
+            echo "<option value = get_all_users()"
         ?>
         <option name="users" value=<?php echo $row["id"];?>><?php echo $row["id"];?></option>
     </select>

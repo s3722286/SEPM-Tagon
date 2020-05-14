@@ -47,8 +47,8 @@ require_once './database.php';
         }
         </script>
 
-    <h2>Login</h2>
     <form name="loginForm" onsubmit="return hashPass()" method="post">
+    <h2>Login</h2>
     <feildset class ='login_form'>
       <div class="row">
         <label class="fixedwidth">Username:</label>
