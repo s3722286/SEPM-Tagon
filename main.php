@@ -27,23 +27,14 @@ session_start();
     <form name="logoutForm" method="post">
         <h2>Main Menu</h2>
         <feildset class ='login_form'>
-        <div class="row">
-            <a href="newuser.php"> 1. Create New User<a>
+        <div class="vertical-menu">
+            <a href="newuser.php">Create New User</a>
+            <a href="edit_user.php">Edit User</a>
+            <a href="addlocation.php">Add Location</a>
+            <a href="editlocation.php">Edit Location</a>
+            <a href="removelocation.php">Remove Location</a>
+            <input type="hidden" id="Logout" name="Logout" value="1">
         </div>
-        <div class="row">
-        <a href="edit_user.php"> 2. Edit User<a>
-        </div>
-        <div class="row">
-        <a href="addlocation.php"> 3. Add Location<a>
-        </div>
-        <div class="row">
-        <a href="editlocation.php"> 4. Edit Location<a>
-        </div>
-        <div class="row">
-        <a href="removelocation.php"> 5. Remove Location<a>
-        </div>
-        <br></br>
-        <input type="hidden" id="Logout" name="Logout" value="1">
-        <a><input type="submit" value="Logout"></a>
+        <button type="submit" class="button"value="Logout">Logout</button>
     </form>
 </body>
