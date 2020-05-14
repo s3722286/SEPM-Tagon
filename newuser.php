@@ -83,10 +83,13 @@ require_once './database.php';
           <label class="fixedwidth">Password:</label>
           <input type="password" id="regPassword" name="regPassword" required />
         </div>
-        <div class="row">
-          <label class="fixedwidth">Admin:</label>
-          <input type="checkbox" name="admin" value="admin" />
-        </div>
+        <?php
+        // put if statement to check if user account it admin
+        echo "<div class='row'>";
+         echo "<label class='fixedwidth'>Admin:</label>";
+         echo "<input type='checkbox' name='userType' value='userType' />";
+        echo "</div>";
+        ?>
         <div class="row">
           <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
           <input type="submit" name="submit" value="Create New Account" />
