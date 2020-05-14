@@ -11,7 +11,8 @@ session_start();
 
   if(isset($_SESSION['username'])){
       $username = $_SESSION['username'];
-      echo "<head><h1>Welcome $username</h1></head>";
+      $display_name = strtoupper($username);
+      echo "<h3>Welcome $display_name</h3>";
       
   }else header("Location: login.php");
   
