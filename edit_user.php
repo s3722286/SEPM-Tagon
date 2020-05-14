@@ -16,18 +16,14 @@
     <h2>Edit User</h2>
     <form name="user-editForm" onsubmit="return editUser()" method="post" >
     <label for="users">Select User:</label>
-    <select id="users">
+    <select id="users" required>
+        <option value="" disabled selected hidden>Choose a user</option>
         <?php
             foreach($row as $next) {
                 echo "<option value='".$next['userID']."'>".$next['userName']."</option>";
-                }	
+            }	
         ?>
     </select>
-        <!-- <p>UserID: <input type="text" id="regUserID" name="regUserID"></p>
-        <p>Password: <input type="password" id="regPassword" name="regPassword"></p><br>
-        <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
-        <a><input type="submit" value="Submit"></a>
-        <a href="main.php">Back<a> -->
         <div class="row">
           <label class="fixedwidth">Username:</label>
           <input type="text" id="regUsername" name="regUsername" required />
