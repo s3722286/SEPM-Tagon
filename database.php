@@ -99,6 +99,17 @@ function get_all_users(){
     $connection->close();
 }
 
+function fill_user($user) {
+    $connection = connect();
+    // $userID = $_POST['userID'];
+    $query="SELECT * FROM sempdatabase.users WHERE userID = '$user'";
+    $result = mysqli_query($connection,$query);
+    $row = mysqli_fetch_array($result);
+
+    return $row;
+
+    $connection->close();
+}
 
 function deleteUser($userID){
     
