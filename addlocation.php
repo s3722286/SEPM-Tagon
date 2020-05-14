@@ -38,7 +38,10 @@ if(isset($_POST['locationname']) && isset($_POST['xcoordinate']) && isset($_POST
 
 <main>
     <h1> Add new location </h1>
-    
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Add Location</title>
+    </head>
 
 
 

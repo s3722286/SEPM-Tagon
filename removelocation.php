@@ -7,6 +7,10 @@ session_start();
 
 
 <main>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Remove Location</title>
+    </head>
     <h1> Remove location </h1>
      <!-- Popup message confirming with user if they really want to delete the location selected -->
     <script type="text/javascript">

@@ -18,11 +18,12 @@ require_once './database.php';
     $password= $_POST['password'];
 
       if(validateLogin($username,$password) == TRUE){
-          echo validateLogin($username,$password);
-         $_SESSION['username'] = $username;
-         header("Location: main.php"); 
-       }else{
-          echo '<p>Username or password is invalid</p>';
+        //echo validateLogin($username,$password);
+        $_SESSION['username'] = $username;
+        header("Location: main.php");
+      }
+      else{
+        echo '<p>Username or password is invalid</p>';
       }
       
     }

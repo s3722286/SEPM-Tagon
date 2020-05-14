@@ -43,6 +43,7 @@ function canCreateUser($username,$connection){
     }else {
         return FALSE;
     }
+    $connection->close();
 
 }
 
@@ -80,6 +81,7 @@ function validateLogin($username,$password){
     }else {
         return FALSE;
     }
+    $connection->close();
 
 }
 
@@ -90,8 +92,11 @@ function get_all_users(){
 	$count=mysqli_num_rows($result);
 	
 	for($i=0;$i<$count;$i++) {
-	    $row[$i]=mysqli_fetch_array($result);
-	}
+        $row[$i]=mysqli_fetch_array($result);
+    }
+    return $row;
+    
+    $connection->close();
 }
 
 
@@ -124,4 +129,3 @@ init();
 //echo validateLogin("amin","fakepass");
 //deleteUser("1");
 ?>
-
