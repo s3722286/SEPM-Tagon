@@ -20,19 +20,6 @@ require_once './database.php';
 
     //redirects to login page after registration.
         //header("Location: main.php"); 
-    
-
-   //if user pressed register button without inputing valid name/password then they are warned.
-  }else if(isset($_POST['pressedRegister']) && !empty($_POST['pressedRegister'])){
-        
-    echo 'Username or password cannot be empty';
-    unset($_POST['pressedRegister']);
-
-  }
-  else {
-	  echo 'User creation was canceled';
-	  unset($_POST['pressedRegister']);
-	
   }
 ?>
 
