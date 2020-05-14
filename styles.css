@@ -15,3 +15,7 @@ form {
     border-style: solid;
     border-color: black;
 }
+.row {
+  margin-top: 5%;
+  margin-bottom: 5%;  
+}
