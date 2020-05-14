@@ -56,7 +56,7 @@ require_once './database.php';
       </div>
       <div class="row">
         <label class="fixedwidth">Password:</label>
-        <input type="password" name="password" required />
+        <input type="password" id ="password" name="password" required />
       </div>
       <div class="row">
         <input type="submit" name="submit" value="Login" />
