@@ -10,7 +10,10 @@ require_once './database.php';
   if(isset($_POST['regUsername']) && isset($_POST['regPassword']) && strlen($_POST['regUsername']) && strlen($_POST['regPassword']) && !empty($_POST['pressedRegister'])){
     $regUsername= $_POST['regUsername'];
     $regPassword= $_POST['regPassword'];
-    $userType = $_POST['userType'];
+    if($_POST['userType'] == 'Admin') {
+      $userType = $_POST['userType'];
+    }
+    else $userType = 'Assistant';
       
      if(createUser($regUsername, $regPassword, $userType)){
         // echo "Successfully created new account with the username of: $regUsername";
@@ -75,7 +78,7 @@ require_once './database.php';
         // put if statement to check if user account it admin
         echo "<div class='row'>";
          echo "<label class='fixedwidth'>Admin:</label>";
-         echo "<input type='checkbox' name='userType' value='userType' />";
+         echo "<input type='checkbox' name='userType' value='Admin' />";
         echo "</div>";
         ?>
         <div class="row">

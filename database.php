@@ -134,6 +134,21 @@ function deleteUser($userID){
     $connection->close();
 }
 
+function editUser($regUsername, $regPassword, $userType){
+    $connection = connect();
+    $query="UPDATE sempdatabase.users SET (userName, password, userType)
+    VALUES ('$username', '$password', '$userType')";   		
+    
+    if ($connection->query($sql) === TRUE) {
+        echo "User Edited";
+    }
+    else {
+        echo "Error editing user: " . $sql . "<br>" . $connection->error;
+    }
+    
+    $connection->close();
+}
+
 //initalise database to make sure that the schema and tables exist
 init();
 //createUser("admin","fakepass");
