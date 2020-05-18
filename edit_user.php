@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once './database.php';
     $row = get_all_users();
 

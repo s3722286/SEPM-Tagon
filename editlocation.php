@@ -1,10 +1,7 @@
 <?php
 session_start();
-
-
-
-
-
+require_once './database.php';
+$row = get_all_locations()
 ?>
 
 
@@ -22,15 +19,17 @@ session_start();
     <div class="list">
         <form name="showlocation" method="post">
             <h2> Edit Location </h2>
-                <p>Select Location</p>
+            <div class="row">
                 <select name= "locations" size ="1">
-                    <option> Select Location</option>
-                    <option value = "location1"> Location 1 </option>
-                    <option value = "location2"> Location 2 </option>
-                    <option value = "location3"> Location 3 </option>
-                    <option value = "location4"> Location 4 </option>
+                    <option value="" disabled selected hidden>Choose a location</option>
+                    <?php
+                        foreach($row as $next) {
+                            echo "<option value='".$next['locationID']."'>".$next['locationName']."</option>";
+                        }
+                    ?>
                 </select>
                 <a><input type = "submit" value="Show"><a>
+            </div>
         </form>
         <form name = "editlocation" method="post">
             <p>Location Name:<input type="text" id="locationname" name="locationame"></p>

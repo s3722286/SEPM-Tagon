@@ -34,13 +34,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `sempdatabase`.`Locations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sempdatabase`.`Locations` (
+CREATE TABLE IF NOT EXISTS `sempdatabase`.`locations` (
   `locationID` INT NOT NULL AUTO_INCREMENT,
   `locationName` VARCHAR(45) NOT NULL,
   `xCoordinate` VARCHAR(45) NOT NULL,
   `yCoordinate` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(1024) NOT NULL,
   `minTime` INT NOT NULL,
+  `description` VARCHAR(1024) NOT NULL,
   PRIMARY KEY (`locationID`),
   UNIQUE INDEX `locationID_UNIQUE` (`locationID` ASC),
   UNIQUE INDEX `locationName_UNIQUE` (`locationName` ASC))

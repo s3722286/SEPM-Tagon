@@ -70,6 +70,43 @@ function createUser($username,$password, $userType){
     $connection->close();
 }
 
+function canCreateLocation($locationname,$connection){
+    
+    // Check if username already exists
+    $sql = "SELECT * FROM sempdatabase.locations WHERE username='$locationname'";
+
+    if ($connection->query($sql) !== FALSE && $connection->affected_rows == 0) {
+        return TRUE;
+    }else {
+        return FALSE;
+    }
+    $connection->close();
+
+}
+
+function createLocation($locationname, $xcoordinate, $ycoordinate, $locationtime, $description){
+    // Establish connection
+    $connection = connect();
+
+    // Check current connection
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+    // Data to insert
+    $sql = "INSERT INTO sempdatabase.locations (locationName, xCoordinate, yCoordinate, minTime, description)
+    VALUES ('$locationname', '$xcoordinate', '$ycoordinate', '$locationtime', '$description')";
+
+    if (canCreateLocation($locationname,$connection) === TRUE && $connection->query($sql) === TRUE) {
+        return TRUE;
+        
+    }else {
+        return FALSE;
+    }
+
+    $connection->close();
+}
+
 function validateLogin($username,$password){
     
     $connection = connect();
@@ -88,6 +125,20 @@ function validateLogin($username,$password){
 function get_all_users(){
     $connection = connect();
     $query='SELECT * FROM sempdatabase.users';   		
+	$result=mysqli_query($connection, $query);
+	$count=mysqli_num_rows($result);
+	
+	for($i=0;$i<$count;$i++) {
+        $row[$i]=mysqli_fetch_array($result);
+    }
+    return $row;
+    
+    $connection->close();
+}
+
+function get_all_locations(){
+    $connection = connect();
+    $query='SELECT * FROM sempdatabase.locations';   		
 	$result=mysqli_query($connection, $query);
 	$count=mysqli_num_rows($result);
 	
