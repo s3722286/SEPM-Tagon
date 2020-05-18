@@ -10,9 +10,10 @@ require_once './database.php';
   if(isset($_POST['regUsername']) && isset($_POST['regPassword']) && strlen($_POST['regUsername']) && strlen($_POST['regPassword']) && !empty($_POST['pressedRegister'])){
     $regUsername= $_POST['regUsername'];
     $regPassword= $_POST['regPassword'];
+    $userType = $_POST['userType'];
       
-     if(createUser($regUsername, $regPassword)){
-        echo "Successfully created new account with the username of: $regUsername";
+     if(createUser($regUsername, $regPassword, $userType)){
+        // echo "Successfully created new account with the username of: $regUsername";
         header("Location: login.php");
      }else{
         echo "Error: Failed to create user. An account with the username of $regUsername already exists."; 

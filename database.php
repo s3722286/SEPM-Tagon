@@ -47,7 +47,7 @@ function canCreateUser($username,$connection){
 
 }
 
-function createUser($username,$password){
+function createUser($username,$password, $userType){
     // Establish connection
     $connection = connect();
 
@@ -57,8 +57,8 @@ function createUser($username,$password){
     }
 
     // Data to insert
-    $sql = "INSERT INTO sempdatabase.users (userName, password)
-    VALUES ('$username', '$password')";
+    $sql = "INSERT INTO sempdatabase.users (userName, password, userType)
+    VALUES ('$username', '$password', '$userType')";
 
     if (canCreateUser($username,$connection) === TRUE && $connection->query($sql) === TRUE) {
         return TRUE;
@@ -104,9 +104,9 @@ function fill_user($user) {
     // $userID = $_POST['userID'];
     $query="SELECT * FROM sempdatabase.users WHERE userID = '$user'";
     $result = mysqli_query($connection,$query);
-    $row = mysqli_fetch_array($result);
+    $field = mysqli_fetch_array($result);
 
-    return $row;
+    return $field;
 
     $connection->close();
 }
