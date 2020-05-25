@@ -34,6 +34,10 @@ session_start();
             <a href="addlocation.php">Add Location</a>
             <a href="editlocation.php">Edit Location</a>
             <a href="removelocation.php">Remove Location</a>
+            <a href="createtour.php">Create New Tour</a>
+	          <a href="edittourtype.php">Edit Tour Type</a>
+	          <a href="edittour.php">Edit Tours</a>
+ 	          <a href="removetour.php">Remove Tour</a>
             <input type="hidden" id="Logout" name="Logout" value="1">
         </div>
         <button type="submit" class="button"value="Logout">Logout</button>
