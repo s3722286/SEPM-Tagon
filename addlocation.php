@@ -2,6 +2,10 @@
 session_start();
 require_once './database.php';
 
+if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+        
+}
 //php not accurate or fully completed as database is not integrated     
 if(isset($_POST['locationname']) && isset($_POST['xcoordinate']) && isset($_POST['ycoordinate']) && isset($_POST['locationtime'])){
   $locationname= $_POST['locationname'];

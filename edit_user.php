@@ -3,7 +3,10 @@
     require_once './database.php';
     $row = get_all_users();
 
-    if( isset($_POST['userID']) ) {
+    if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+        
+    }else if( isset($_POST['userID']) ) {
         $userID = $_POST['userID'];
         $field = fill_user($userID);
         $userID = $field['userID'];

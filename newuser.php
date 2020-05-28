@@ -2,6 +2,11 @@
 session_start();
 require_once './database.php';
 
+if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+        
+}
+
 // Login/Register system based on Artem's previous work for assignment 1 for Cloud Computing.
 
 //very much not final and barebones but I have to do the same thing for three assignments ok??
