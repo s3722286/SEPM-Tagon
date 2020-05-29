@@ -196,10 +196,10 @@ function deleteUser($userID){
     $connection->close();
 }
 
-function editUser($regUsername, $regPassword, $userType){
+function editUser($username, $password, $userType, $id){
     $connection = connect();
-    $query="UPDATE sempdatabase.users SET (userName, password, userType)
-    VALUES ('$username', '$password', '$userType')";   		
+    $sql="UPDATE sempdatabase.users SET userName = '$username', password = '$password', userType = '$userType' WHERE userID = $id;";   
+    echo $sql;
     
     if ($connection->query($sql) === TRUE) {
         echo "User Edited";

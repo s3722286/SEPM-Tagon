@@ -3,6 +3,7 @@
     require_once './database.php';
     $row = get_all_users();
 
+    echo var_dump($_POST);
     if(!isset($_SESSION['username'])){
         header("Location: login.php");
         
@@ -28,8 +29,9 @@
             echo "<p>Edit</p>";
             $regUsername= $_POST['regUsername'];
             $regPassword= $_POST['regPassword'];
-            $userType = $_POST['userType'];
-            editUser($regUsername, $regPassword, $userType);
+            $userType = "Admin";
+            $userID = $_POST['userID'];
+            editUser($regUsername, $regPassword, $userType, $userID);
         }
     }
 ?>
@@ -39,6 +41,20 @@
         <link rel="stylesheet" href="styles.css">
         <title>Edit User</title>
     </head>
+    
+    <script src="sha256.js"></script>
+    <script type="text/javascript">
+        //use SHA256 to hash password before sending to server.
+        function hashPass() {
+            var inputPass = document.getElementById('regPassword').value;
+            var hashedPass = SHA256.hash(inputPass);
+
+            document.getElementById('regPassword').innerHTML = hashedPass;
+            document.getElementById('regPassword').value = hashedPass;
+
+        }
+        </script>
+    
     <form name="user-selectForm" method="post" enctype="multipart/form-data" >
         <h2>Edit User</h2>
         <div class="row">
@@ -55,10 +71,11 @@
     </form>
 <?php if(isset($_POST['userID'])){
     $EditForm = <<<EndOfEditForm
-    <form name="user-editForm" action="commitEdit()" method="post" >
+    <form name="user-editForm" onsubmit="return hashPass()" action="edit_user.php" method="post" >
         <div class="row">
           <label class="fixedwidth">ID:</label>
           <label class="fixedwidth">$userID</label>
+          <input type="hidden" name="userID" value="$userID" required />
         </div>
         <div class="row">
           <label class="fixedwidth">Username:</label>
