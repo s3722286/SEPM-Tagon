@@ -36,7 +36,7 @@
             echo "<p>Edit</p>";
             $regUsername= $_POST['regUsername'];
             $regPassword= $_POST['regPassword'];
-            $userType = "Admin";
+            $userType = $_POST['userType'];
             $userID = $_POST['userID'];
             editUser($regUsername, $regPassword, $userType, $userID);
         }
@@ -54,10 +54,14 @@
         //use SHA256 to hash password before sending to server.
         function hashPass() {
             var inputPass = document.getElementById('regPassword').value;
-            var hashedPass = SHA256.hash(inputPass);
+            //if password is same as current or empty, then dont hash
+            if(inputPass !== $password || inputPass !== ""){
+               var hashedPass = SHA256.hash(inputPass);
 
-            document.getElementById('regPassword').innerHTML = hashedPass;
-            document.getElementById('regPassword').value = hashedPass;
+               document.getElementById('regPassword').innerHTML = hashedPass;
+               document.getElementById('regPassword').value = hashedPass;
+             }
+            
 
         }
         </script>
@@ -94,7 +98,7 @@
           <input type="password" id="regPassword" name="regPassword" value="$password" required />
         </div>
         <div class='row'>
-            <label for="userType" class='fixedwidth'>User Type/Role:</label>
+            <label for="userType" class='fixedwidth'>User Type:</label>
             <select name='userType' id="userType">
               <option value="Assistant" $isAssistantSelected>Assistant</option>
               <option value="Admin" $isAdminSelected>Admin</option>
