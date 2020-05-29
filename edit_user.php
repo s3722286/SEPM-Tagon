@@ -13,7 +13,7 @@
         $userName = $field['userName'];
         $password = $field['password'];
         $userType = $field['userType'];
-        if( $userType = "Admin") {
+        if( $userType == "Admin") {
             $checked = "checked";
         }else $checked = "";
     }
@@ -53,22 +53,24 @@
             <input type="submit" name="select" value="select" />
         </div>
     </form>
+<?php if(isset($_POST['userID'])){
+    $EditForm = <<<EndOfEditForm
     <form name="user-editForm" action="commitEdit()" method="post" >
         <div class="row">
           <label class="fixedwidth">ID:</label>
-          <label class="fixedwidth"><?php echo $userID ?></label>
+          <label class="fixedwidth">$userID</label>
         </div>
         <div class="row">
           <label class="fixedwidth">Username:</label>
-          <input type="text" id="regUsername" name="regUsername" value="<?php echo $userName ?>" required />
+          <input type="text" id="regUsername" name="regUsername" value="$userName" required />
         </div>
         <div class="row">
           <label class="fixedwidth">Password:</label>
-          <input type="password" id="regPassword" name="regPassword" value="<?php echo $password ?>" required />
+          <input type="password" id="regPassword" name="regPassword" value="$password" required />
         </div>
         <div class='row'>
             <label class='fixedwidth'>Admin:</label>
-            <input type='checkbox' name='userType' value='userType' <?php echo $checked ?>/>
+            <input type='checkbox' name='userType' value='userType' $checked/>
         </div>
         <div class="row">
           <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
@@ -77,5 +79,9 @@
           <a href="main.php">Back<a>
         </div>
     </form>
+EndOfEditForm;
+    echo $EditForm;
+}
+            ?>
 
 </main>
