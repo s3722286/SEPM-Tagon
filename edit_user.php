@@ -14,9 +14,16 @@
         $userName = $field['userName'];
         $password = $field['password'];
         $userType = $field['userType'];
+        
+        //set which type option is selected by default
+        //based on user type of user that is selected
         if( $userType == "Admin") {
-            $checked = "checked";
-        }else $checked = "";
+            $isAssistantSelected = "";
+            $isAdminSelected = "selected";
+        }else{
+            $isAssistantSelected = "selected";
+            $isAdminSelected = "";
+        }
     }
     if( isset($_POST['delete']) || isset($_POST['edit'])) {
         commitEdit();
@@ -70,6 +77,7 @@
         </div>
     </form>
 <?php if(isset($_POST['userID'])){
+    
     $EditForm = <<<EndOfEditForm
     <form name="user-editForm" onsubmit="return hashPass()" action="edit_user.php" method="post" >
         <div class="row">
@@ -86,11 +94,13 @@
           <input type="password" id="regPassword" name="regPassword" value="$password" required />
         </div>
         <div class='row'>
-            <label class='fixedwidth'>Admin:</label>
-            <input type='checkbox' name='userType' value='userType' $checked/>
+            <label for="userType" class='fixedwidth'>User Type/Role:</label>
+            <select name='userType' id="userType">
+              <option value="Assistant" $isAssistantSelected>Assistant</option>
+              <option value="Admin" $isAdminSelected>Admin</option>
+            </select>
         </div>
         <div class="row">
-          <input type="hidden" id="pressedRegister" name="pressedRegister" value="1">
           <input type="submit" name="edit" value="Commit Edit" />
           <input type="submit" name="delete" value="Delete User" />
           <a href="main.php">Back<a>
