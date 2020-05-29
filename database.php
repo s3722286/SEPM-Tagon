@@ -122,6 +122,17 @@ function validateLogin($username,$password){
 
 }
 
+function getUserType($username){
+    $connection = connect();
+    $sql = "SELECT users.userType FROM sempdatabase.users WHERE username='$username'";
+    
+	$result = mysqli_query($connection, $sql);
+    $types = mysqli_fetch_array($result);
+    $connection->close();
+    //Need result will always be an array even if its only 1 result
+    return $types[0];
+}
+
 function get_all_users(){
     $connection = connect();
     $query='SELECT * FROM sempdatabase.users';   		

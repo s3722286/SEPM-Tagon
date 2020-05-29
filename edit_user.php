@@ -15,8 +15,7 @@
         $userType = $field['userType'];
         if( $userType = "Admin") {
             $checked = "checked";
-        }
-        else $checked = "";
+        }else $checked = "";
     }
     if( isset($_POST['delete']) || isset($_POST['edit'])) {
         commitEdit();

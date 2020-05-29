@@ -1,18 +1,19 @@
 <?php
 session_start();
+require_once './database.php';
 
-//if userID is set then 
 
   if(isset($_POST['Logout'])){
       unset($_SESSION['username']);
       //Skips alert box obviously
-      //echo "<script>alert(\"You have been logged out successfully\")</script>";
+      echo "<script>alert(\"You have been logged out successfully\")</script>";
   }
 
   if(isset($_SESSION['username'])){
       $username = $_SESSION['username'];
       $display_name = strtoupper($username);
-      echo "<h3>Welcome $display_name</h3>";
+      $type = getUserType($_SESSION['username']);
+      echo "<h3>Welcome $display_name Role: $type</h3>";
       
   }else header("Location: login.php");
   
