@@ -258,7 +258,7 @@ function removeTourType($tourType){
 
 function changeTourType($tourType, $changedTourType){
     $connection = connect();
-    $sql="UPDATE sempdatabase.tourTypes SET tourTypeName = '$changedTourType' WHERE tourTypeName = $tourType;";   
+    $sql="UPDATE sempdatabase.tourTypes SET tourTypeName = '$changedTourType' WHERE tourTypeName = '$tourType';";
     mysqli_query($connection, $sql);
     
     $connection->close();
