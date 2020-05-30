@@ -30,6 +30,12 @@ CREATE TABLE IF NOT EXISTS `sempdatabase`.`users` (
   UNIQUE INDEX `userName_UNIQUE` (`userName` ASC) VISIBLE)
 ENGINE = InnoDB;
 
+-- Insert superuser as an default admin user default password is root. Change this first!
+INSERT IGNORE INTO `sempdatabase`.`users`
+  SET `userName` = 'Admin',
+  `password` = '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2',
+  `userType` = 'Admin';
+
 
 -- -----------------------------------------------------
 -- Table `sempdatabase`.`Locations`
