@@ -34,10 +34,10 @@ if(isset($_POST['locationname']) && isset($_POST['xcoordinate']) && isset($_POST
         <p>Location Name:<input type="text" id="locationname" name="locationame" required></p>
       </div>
       <div class="row">
-        <p>X Coordinate:<input type="text" id="xcoordinate" name="xcoordinate" required></p>
+        <p>X Coordinate:<input type="number" id="xcoordinate" name="xcoordinate" required></p>
       </div>
       <div class="row">
-        <p>Y Coordinate:<input type="text" id="ycoordinate" name="ycoordinate" required></p>
+        <p>Y Coordinate:<input type="number" id="ycoordinate" name="ycoordinate" required></p>
       </div>
       <div class="row">
         <p>Location Time (min):<input type="number" id="locationtime" name="locationtime" required></p>
