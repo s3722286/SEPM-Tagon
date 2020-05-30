@@ -214,7 +214,7 @@ function editUser($username, $password, $userType, $id){
 }
 
 //initalise database to make sure that the schema and tables exist
-init();
+//init();
 //createUser("admin","fakepass");
 //echo validateLogin("amin","fakepass");
 //deleteUser("1");
