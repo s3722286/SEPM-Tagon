@@ -40,15 +40,16 @@ if(isset($_POST['locationname']) && isset($_POST['xcoordinate']) && isset($_POST
         <p>Y Coordinate:<input type="text" id="ycoordinate" name="ycoordinate" required></p>
       </div>
       <div class="row">
-        <p>Location Time (min):<input type="number" id="locationtime" name="locationtime" required></p>
+        <p>Location Time (min):</p><input type="time" id="locationtime" name="locationtime" required>
       </div>
       <div class="row">
         <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" cols="40"> </textarea>
+        <br><br>
+        <textarea class="description" id="description" name="description" rows="4" cols="40"> </textarea>
       </div>
       <div class="row">
         <input type="hidden" id="pressedAdd" name="pressedAdd" value="1">
-        <a><input type = "submit" value="Create new location"><a>
+        <input type = "submit" value="Create new location">
         <a href= "main.php"> Back <a>
       </div>
     </form>

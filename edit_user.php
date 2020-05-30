@@ -116,8 +116,8 @@
             </select>
         </div>
         <div class="row">
-          <input type="submit" name="edit" value="Commit Edit" />
-          <input type="submit" name="delete" value="Delete User" />
+          <input type="submit" name="edit" value="Update" />
+          <input type="submit" name="delete" value="Delete" />
           <a href="main.php">Back<a>
         </div>
     </form>
