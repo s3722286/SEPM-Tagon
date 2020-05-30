@@ -13,6 +13,17 @@ if(!isset($_SESSION['username'])){
             echo "<script>alert(\"Tour Type: $tourType Was successfully added\");</script>";
         }else echo "<script>alert(\"Error: A tour type with the name of $tourType already exists!\");</script>";
     }
+    if(isset($_POST['removetourtypes'])){
+        $tourType = $_POST['removetourtypes'];
+        removeTourType($tourType);
+        echo "<script>alert(\"Tour Type: $tourType Deleted Successfully\");</script>";
+    }
+    if(isset($_POST['changetype']) && isset($_POST['changeto'])){
+        $tourType = $_POST['changetype'];
+        $changedType = $_POST['changeto'];
+        changeTourType($tourType, $changedType);
+        echo "<script>alert(\"Tour Type: $tourType Was Changed to $changedType Successfully\");</script>";
+    }
 }
 ?>
 
@@ -46,56 +57,55 @@ if(!isset($_SESSION['username'])){
         <!-- Drop down list containing existing locations   -->
         <div class="list">
 
-            <h2> Edit Tour Type </h2>
+            <h1> Edit Tour Type </h1>
             <form name="addtourtype" method="post">
-                <p>Add Tour Type:<input type="text" id="addtourtype" name="addtourtype"></p>
+                <label for="addtourtype">Add Tour Type:</label>
+                <input type="text" id="addtourtype" name="addtourtype">
                 <input type="submit" value="Add">
 
             </form>
-        </div>
 
         <!-- Show tour types in a drop down list -->
-        <div class="list">
             <form name="removetourtypes" method="post">
+                <label for="removetourtypes">Remove Tour Type:</label>
                 <select name="removetourtypes" size="1">
 
                     <option value="" disabled selected hidden>Remove a tour type</option>
 
-                    <!-- php code is not correct -->
+                    
                    <?php
+                    $row = getAllTourTypes();
                         foreach($row as $next) {
-                            echo "<option value='".$next['locationID']."'>".$next['locationName']."</option>";
+                            echo "<option value='".$next['tourTypeName']."'>".$next['tourTypeName']."</option>";
                         }
                     ?>
-                    <!-- php code is not correct -->
 
                 </select>
                 <input type="submit" value="Remove">
             </form>
-        </div>
-
-        <div class="list">
             <form name="changetypelabel" method="post">
                 <div class="row">
-                    <select name="changetypelabel" size="1">
+                    <label for="changetype">Change Tour Type:</label>
+                    <select name="changetype" size="1">
 
-                    <option value="" disabled selected hidden>Select a type label</option>
+                    <option value="" disabled selected hidden>Select a Tour Type to Change</option>
 
-                    <!-- php code is not correct -->
+                
                    <?php
+                        $row = getAllTourTypes();
                         foreach($row as $next) {
-                            echo "<option value='".$next['locationID']."'>".$next['locationName']."</option>";
+                            echo "<option value='".$next['tourTypeName']."'>".$next['tourTypeName']."</option>";
                         }
                     ?>
                     <!-- php code is not correct -->
 
-                </select>
-                    <input type = "submit" value="Show">
-                <p>Change to:<input type="text" id="changeto" name="changeto"></p>
-
+                </select><br>
+                    <label for="changeto">Change To:</label>
+                <input type="text" id="changeto" name="changeto">
+                <input type = "submit" value="Change">
             </div>
-            <input type = "submit" value="Update">
-                <a href= "main.php"> Back </a>
+            
+                <a href= "main.php"> Go Back </a>
         </form>
     </div>
 

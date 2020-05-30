@@ -234,6 +234,36 @@ function addTourType($newType){
     $connection->close();
 }
 
+function getAllTourTypes(){
+    $connection = connect();
+    $query='SELECT * FROM sempdatabase.tourTypes';   		
+	$result=mysqli_query($connection, $query);
+	$count=mysqli_num_rows($result);
+	
+	for($i=0;$i<$count;$i++) {
+        $row[$i]=mysqli_fetch_array($result);
+    }
+    $connection->close();
+    return $row;
+    
+}
+
+function removeTourType($tourType){
+    $connection = connect();
+    $sql = "DELETE FROM sempdatabase.tourTypes WHERE tourTypeName='$tourType'";   
+    mysqli_query($connection, $sql);
+    
+    $connection->close();
+}
+
+function changeTourType($tourType, $changedTourType){
+    $connection = connect();
+    $sql="UPDATE sempdatabase.tourTypes SET tourTypeName = '$changedTourType' WHERE tourTypeName = $tourType;";   
+    mysqli_query($connection, $sql);
+    
+    $connection->close();
+}
+
 
 //initalise database to make sure that the schema and tables exist
 //init();
