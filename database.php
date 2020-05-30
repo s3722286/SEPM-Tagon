@@ -213,6 +213,28 @@ function editUser($username, $password, $userType, $id){
     $connection->close();
 }
 
+function canAddTourType($newType){
+    $connection = connect();
+    $sql="SELECT * FROM sempdatabase.tourTypes WHERE tourTypeName = '$newType'";   
+    $result=mysqli_query($connection, $sql);
+    $count=mysqli_num_rows($result);
+    
+    if($count >= 1){
+        return FALSE;
+    }else return TRUE;
+    
+    $connection->close();
+}
+
+function addTourType($newType){
+    $connection = connect();
+    $sql="INSERT INTO sempdatabase.tourTypes (tourTypeName) values ('$newType')";   
+    mysqli_query($connection, $sql);
+    
+    $connection->close();
+}
+
+
 //initalise database to make sure that the schema and tables exist
 //init();
 //createUser("admin","fakepass");
