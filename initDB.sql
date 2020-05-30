@@ -53,6 +53,32 @@ CREATE TABLE IF NOT EXISTS `sempdatabase`.`locations` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `sempdatabase`.`Tours`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sempdatabase`.`tours` (
+  `tourID` INT NOT NULL AUTO_INCREMENT,
+  `tourName` VARCHAR(45) NOT NULL,
+  `tourType` VARCHAR(128) NOT NULL,
+  `tourLocations` VARCHAR(512) NOT NULL,
+  `minDuration` INT NOT NULL,
+  PRIMARY KEY (`tourID`),
+  UNIQUE INDEX `tourID_UNIQUE` (`tourID` ASC),
+  UNIQUE INDEX `tourName_UNIQUE` (`tourName` ASC))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `sempdatabase`.`TourTypes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sempdatabase`.`tourTypes` (
+  `tourTypeID` INT NOT NULL AUTO_INCREMENT,
+  `tourTypeName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`tourTypeID`),
+  UNIQUE INDEX `tourTypeID_UNIQUE` (`tourTypeID` ASC),
+  UNIQUE INDEX `tourTypeName_UNIQUE` (`tourTypeName` ASC))
+ENGINE = InnoDB;
+
+
 -- SET SQL_MODE=@OLD_SQL_MODE;
 -- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 -- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
