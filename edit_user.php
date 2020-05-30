@@ -61,8 +61,11 @@
             //use SHA256 to hash password before sending to server.
             function hashPass() {
                 var inputPass = document.getElementById('regPassword').value;
-                //if password is empty, then dont hash
-                if (inputPass !== "") {
+                console.log(inputPass)
+                //if password is empty/null, then dont hash
+                if (!inputPass) {
+                      //do nothing Because password is unchanged
+                }else{
                     var hashedPass = SHA256.hash(inputPass);
 
                     document.getElementById('regPassword').innerHTML = hashedPass;
@@ -103,7 +106,7 @@
         </div>
         <div class="row">
           <label class="fixedwidth">Password:</label>
-          <input type="password" id="regPassword" name="regPassword" value=""/>
+          <input type="password" id="regPassword" name="regPassword" value="" required/>
         </div>
         <div class='row'>
             <label for="userType" class='fixedwidth'>User Type:</label>

@@ -4,9 +4,11 @@
 
 function connect(){
     
-    $sqlHost = "localhost";
+    //Replace SQL host,username and password for the database you are using
+    //Details here may have been used in development
+    $sqlHost = "35.189.54.237"; //pra3-1semp Google Cloud DB 
     $sqlUsername = "root";
-    $sqlPassword = file_get_contents('devDBPassword.txt');//Used only in development for local database put your local db password in this text file to test website
+    $sqlPassword = "sHfjj5DAA04q6OIy";//This password is used only in development for cloud database
    
     $connection = new mysqli ($sqlHost, $sqlUsername, $sqlPassword);
     return $connection;
