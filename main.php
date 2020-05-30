@@ -2,13 +2,6 @@
 session_start();
 require_once './database.php';
 
-
-  if(isset($_POST['Logout'])){
-      unset($_SESSION['username']);
-      //Skips alert box obviously
-      echo "<script>alert(\"You have been logged out successfully\")</script>";
-  }
-
   if(isset($_SESSION['username'])){
       $username = $_SESSION['username'];
       $display_name = strtoupper($username);
@@ -16,8 +9,13 @@ require_once './database.php';
       echo "<h3>Welcome $display_name Role: $type</h3>";
       
   }else header("Location: login.php");
-  
-//if user clicks LogOut Button then unset their userID SESSION variable and redirect to loginpage
+
+//if user clicks LogOut Button then unset their username SESSION variable and redirect to login page
+
+  if(isset($_POST['Logout'])){
+      unset($_SESSION['username']);
+      echo "<script>alert(\"You have been logged out successfully\"); window.location = \"login.php\"</script>";
+  }
   
 
 ?>

@@ -187,10 +187,10 @@ function deleteUser($userID){
     $sql = "DELETE FROM sempdatabase.users WHERE userID='$userID'";
 
     if ($connection->query($sql) === TRUE) {
-        echo "User deleted";
+        //echo "User deleted";
     }
     else {
-        echo "Error deleting user: " . $sql . "<br>" . $connection->error;
+        //echo "Error deleting user: " . $sql . "<br>" . $connection->error;
     }
 
     $connection->close();
@@ -199,13 +199,13 @@ function deleteUser($userID){
 function editUser($username, $password, $userType, $id){
     $connection = connect();
     $sql="UPDATE sempdatabase.users SET userName = '$username', password = '$password', userType = '$userType' WHERE userID = $id;";   
-    echo $sql;
+    //echo $sql;
     
     if ($connection->query($sql) === TRUE) {
-        echo "User Edited";
+        //echo "User Edited";
     }
     else {
-        echo "Error editing user: " . $sql . "<br>" . $connection->error;
+        //echo "Error editing user: " . $sql . "<br>" . $connection->error;
     }
     
     $connection->close();
