@@ -56,7 +56,7 @@ if(!isset($_SESSION['username'])){
         <p>Y Coordinate:<input type="text" id="ycoordinate" name="ycoordinate"></p>
         <p>Location Time (min):<input type="number" id="locationtime" name="locationtime" ></p>
         <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" cols="35"> </textarea>
+        <textarea id="description" name="description" rows="4" cols="30"> </textarea>
         <br> <br>
         <input type="hidden" id="pressedAdd" name="pressedAdd" value="1">
         <a><input type = "submit" value="Delete Location"><a>

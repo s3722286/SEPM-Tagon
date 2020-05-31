@@ -60,8 +60,8 @@ require_once './database.php';
         <input type="password" id ="password" name="password" required />
       </div>
       <div class="row">
-        <input type="submit" name="submit" value="Login" />
-        <a href="newuser.php">Signup</a>
+        <input style="margin-left: 60%;"type="submit" name="submit" value="Login" />
+        <!-- <a href="newuser.php">Signup</a> -->
       </div>
     </feildset>
     </form>

@@ -43,7 +43,7 @@ if(!isset($_SESSION['username'])){
             <!-- Tours may contain more than 1 location, delete locations - display as a drop down list??? --> 
             <p>Remove Location: <input type="text" id="removelocation" name="removelocation"></p>
             <label for="tourlocations">Locations in the Tour:</label>
-            <textarea class="description" id="tourlocations" name="tourlocations" rows="4" cols="25"> </textarea>
+            <textarea class="description" id="tourlocations" name="tourlocations" rows="4" cols="30"> </textarea>
             <br> <br>
             <input type="hidden" id="pressedAdd" name="pressedAdd" value="1">
             <input type = "submit" value="Update">

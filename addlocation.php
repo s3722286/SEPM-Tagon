@@ -45,7 +45,7 @@ if(isset($_POST['locationname']) && isset($_POST['xcoordinate']) && isset($_POST
       <div class="row">
         <label for="description">Description:</label>
         <br><br>
-        <textarea class="description" id="description" name="description" rows="4" cols="40"> </textarea>
+        <textarea class="description" id="description" name="description" rows="4" cols="30"> </textarea>
       </div>
       <div class="row">
         <input type="hidden" id="pressedAdd" name="pressedAdd" value="1">

@@ -50,6 +50,9 @@ p {
     font-size: 14px;
     /* box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 50px 0 rgba(0,0,0,0.19); */
 }
+input {
+    margin-bottom: 1%;
+}
 .button {
     background-color: #f4a261;
     border: none;
@@ -73,6 +76,7 @@ p {
     display: block;
     padding: 12px;
     text-decoration: none;
+    width: 100%;
 }
 .description {
     box-sizing: border-box;

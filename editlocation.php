@@ -37,7 +37,7 @@ $row = get_all_locations()
             <p>Y Coordinate:<input type="text" id="ycoordinate" name="ycoordinate"></p>
             <p>Location Time (min):<input type="number" id="locationtime" name="locationtime" ></p>
             <label for="description">Description:</label>
-            <textarea class="description" id="description" name="description" rows="4" cols="35"> </textarea>
+            <textarea class="description" id="description" name="description" rows="4" cols="30"> </textarea>
             <br> <br>
             <input type="hidden" id="pressedAdd" name="pressedAdd" value="1">
             <input type="submit" name="edit" value="Update" />
