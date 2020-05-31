@@ -28,22 +28,40 @@ $row = get_all_locations()
                         }
                     ?>
                 </select>
-                <a><input type = "submit" value="Show"><a>
+                <a><input type = "submit" value="Show"></a>
             </div>
         </form>
+ <?php       
+        
+    if(isset($_POST['locations'])){
+        $locationID = $_POST['locations'];
+        $field = get_location($locationID);
+        $locationName = $field['locationName'];
+        $xCoord = $field['xCoordinate'];
+        $yCoord = $field['yCoordinate'];
+        $description = $field['description'];
+        
+        $editLocationForm = <<<EndOfEditForm
+
         <form name = "editlocation" method="post">
-            <p>Location Name:<input type="text" id="locationname" name="locationame"></p>
-            <p>X Coordinate:<input type="text" id="xcoordinate" name="xcoordinate"></p>
-            <p>Y Coordinate:<input type="text" id="ycoordinate" name="ycoordinate"></p>
-            <p>Location Time (min):<input type="number" id="locationtime" name="locationtime" ></p>
-            <label for="description">Description:</label>
-            <textarea class="description" id="description" name="description" rows="4" cols="30"> </textarea>
+            <input type="hidden" id="locationID" name="locationID" value="$locationID">
+            <label for="locationname">Location Name:</label>
+            <input type="text" id="locationname" name="locationname" value="$locationName"><br>
+            <label for="ycoordinate">X Coordinate:</label>
+            <input type="text" id="xcoordinate" name="xcoordinate" value="$xCoord"><br>
+            <label for="ycoordinate">Y Coordinate:</label>
+            <input type="text" id="ycoordinate" name="ycoordinate" value="$yCoord"><br>
+            <label for="description">Description:</label><br>
+            <textarea class="description" id="description" name="description" rows="4" cols="30">$description</textarea>
             <br> <br>
-            <input type="hidden" id="pressedAdd" name="pressedAdd" value="1">
             <input type="submit" name="edit" value="Update" />
             <input type="submit" name="delete" value="Delete" />
-            <a href= "main.php"> Back <a>
+            <a href= "main.php"> Back </a>
         </form>
+EndOfEditForm;
+        echo $editLocationForm;
+    }
+?>        
     </div>
 
 

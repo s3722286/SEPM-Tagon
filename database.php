@@ -114,6 +114,18 @@ function createLocation($locationname, $xcoordinate, $ycoordinate, $locationtime
     
 }
 
+function get_location($id) {
+    $connection = connect();
+    // $userID = $_POST['userID'];
+    $query="SELECT * FROM sempdatabase.locations WHERE locationID = '$id'";
+    $result = mysqli_query($connection,$query);
+    $field = mysqli_fetch_array($result);
+
+    return $field;
+
+    $connection->close();
+}
+
 function validateLogin($username,$password){
     
     $connection = connect();
