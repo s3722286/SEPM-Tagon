@@ -2,11 +2,27 @@
 session_start();
 require_once './database.php';
 
-echo var_dump($_POST);
-
 if(!isset($_SESSION['username'])){
         header("Location: login.php");
         
+}
+
+if(isset($_POST['create'])){
+    $name = $_POST['tourname'];
+    $type = $_POST['showtype'];
+    $locationArr = $_POST['locations'];
+    $locations = "";
+    $minDuration = 0;
+    
+    foreach($locationArr as $loc){
+        $locations = $locations . $loc . ",";
+        $minDuration = $minDuration + getLocationTime($loc);
+    }
+    //echo var_dump(explode(',', $locations));
+    //$locations = "1,2,3"; 
+    //$minDuration = $_POST[''];
+    createTour($name, $type, $locations, $minDuration);
+    echo "<script>alert(\"Tour $name was created!\");</script>";
 }
 
 ?>
@@ -22,6 +38,7 @@ if(!isset($_SESSION['username'])){
             var selection = document.createElement("select");
             selection.setAttribute('name', 'locations[]');
             selection.setAttribute('size', 1);
+            selection.setAttribute('required', true);
 
             var option = document.createElement("option");
             option.value = '';
@@ -77,7 +94,7 @@ if(!isset($_SESSION['username'])){
             <div class="loclist" id="loclist">
                 <div class="row" id="locationDiv">
                     <label for="showtype">Add Location:</label>
-                    <select name="locations[]" size="1">
+                    <select name="locations[]" size="1" required>
                     <option value="" disabled selected hidden>Select a location</option>
 
                     <?php
@@ -112,7 +129,7 @@ if(!isset($_SESSION['username'])){
                     </div> -->
 
             <div class="row">
-                <input type="submit" value="Create new tour">
+                <input type="submit" name="create" value="Create new tour">
                 <a href="main.php"> Back </a>
             </div>
 

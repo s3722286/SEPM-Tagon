@@ -164,6 +164,17 @@ function deleteLocation($id){
     $connection->close();
 }
 
+function getLocationTime($id){
+    $connection = connect();
+    $sql = "SELECT locations.minTime FROM sempdatabase.locations WHERE locationID='$id'";
+    
+	$result = mysqli_query($connection, $sql);
+    $types = mysqli_fetch_array($result);
+    $connection->close();
+    //Need result will always be an array even if its only 1 result
+    return $types[0];
+}
+
 function validateLogin($username,$password){
     
     $connection = connect();
@@ -243,12 +254,7 @@ function deleteUser($userID){
     // Data to delete
     $sql = "DELETE FROM sempdatabase.users WHERE userID='$userID'";
 
-    if ($connection->query($sql) === TRUE) {
-        //echo "User deleted";
-    }
-    else {
-        //echo "Error deleting user: " . $sql . "<br>" . $connection->error;
-    }
+    $connection->query($sql);
 
     $connection->close();
 }
@@ -256,14 +262,62 @@ function deleteUser($userID){
 function editUser($username, $password, $userType, $id){
     $connection = connect();
     $sql="UPDATE sempdatabase.users SET userName = '$username', password = '$password', userType = '$userType' WHERE userID = $id;";   
-    //echo $sql;
     
-    if ($connection->query($sql) === TRUE) {
-        //echo "User Edited";
+    $connection->query($sql);
+    $connection->close();
+}
+
+function createTour($name, $type, $locations, $minDuration){
+    // Establish connection
+    $connection = connect();
+
+    // Check current connection
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
     }
-    else {
-        //echo "Error editing user: " . $sql . "<br>" . $connection->error;
+
+    // Data to insert
+    $sql = "INSERT INTO sempdatabase.tours (tourName, tourType, tourLocations, minDuration)
+    VALUES ('$name', '$type', '$locations', '$minDuration')";
+
+    if ($connection->query($sql) !== FALSE) {
+        $connection->close();
+        return TRUE;
+        
+    }else {
+        $connection->close();
+        return FALSE;
     }
+
+    
+}
+
+function getAllTours(){
+    $connection = connect();
+    $query='SELECT * FROM sempdatabase.tours';   		
+	$result=mysqli_query($connection, $query);
+	$count=mysqli_num_rows($result);
+	
+	for($i=0;$i<$count;$i++) {
+        $row[$i]=mysqli_fetch_array($result);
+    }
+    $connection->close();
+    return $row;
+    
+}
+
+function removeTour($tourID){
+    $connection = connect();
+    $sql = "DELETE FROM sempdatabase.tours WHERE tourID='$tourID'";   
+    mysqli_query($connection, $sql);
+    
+    $connection->close();
+}
+
+function changeTour($tourID, $name, $type, $locations, $minDuration){
+    $connection = connect();
+    $sql="UPDATE sempdatabase.tours SET tourName = '$name', tourType= '$type', tourLocations = '$locations', minDuration = '$minDuration' WHERE tourID = '$tourID';";
+    mysqli_query($connection, $sql);
     
     $connection->close();
 }
