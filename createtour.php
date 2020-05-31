@@ -24,7 +24,7 @@ if(!isset($_SESSION['username'])){
             <div class="list">
                 <div class="row">
                     <label for="showtype">Add Location:</label>
-                    <select name="addlocations" size="1">
+                    <select name="locations[]" size="1">
                     <option value="" disabled selected hidden>Add a location</option>
                 </select>
                 </div>
