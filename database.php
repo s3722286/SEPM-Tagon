@@ -72,19 +72,19 @@ function createUser($username,$password, $userType){
     $connection->close();
 }
 
-function canCreateLocation($locationname,$connection){
+function canCreateLocation($locationname){
     
     $connection = connect();
-    // Check if username already exists
+    // Check if location name already exists
     $sql = "SELECT * FROM sempdatabase.locations WHERE locationName='$locationname'";
 
     if (($connection->query($sql) !== FALSE) && ($connection->affected_rows == 0)) {
-        $connection->close();
         return TRUE;
     }else {
-        $connection->close();
         return FALSE;
     }
+
+    $connection->close();
     
 
 }
@@ -102,7 +102,7 @@ function createLocation($locationname, $xcoordinate, $ycoordinate, $locationtime
     $sql = "INSERT INTO sempdatabase.locations (locationName, xCoordinate, yCoordinate, minTime, description)
     VALUES ('$locationname', '$xcoordinate', '$ycoordinate', '$locationtime', '$description')";
 
-    if ((canCreateLocation($locationname,$connection) == TRUE) && ($connection->query($sql) !== FALSE)) {
+    if ((canCreateLocation($locationname) == TRUE) && ($connection->query($sql) !== FALSE)) {
         $connection->close();
         return TRUE;
         
