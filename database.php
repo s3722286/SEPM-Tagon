@@ -126,6 +126,44 @@ function get_location($id) {
     $connection->close();
 }
 
+function updateLocation($id, $name, $xCoord, $yCoord, $minTime, $desc){
+    $connection = connect();
+    $sql="UPDATE sempdatabase.locations SET locationName = '$name', xCoordinate = '$xCoord', yCoordinate = '$yCoord', minTime = '$minTime', description = '$desc' WHERE locationID = $id;";   
+    //echo $sql;
+    
+    if ($connection->query($sql) !== FALSE) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+
+    $connection->close();
+}
+
+function deleteLocation($id){
+    
+    // Establish connection
+    $connection = connect();
+
+    // Check current connection
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+    // Data to delete
+    $sql = "DELETE FROM sempdatabase.locations WHERE locationID='$id'";
+
+    if ($connection->query($sql) !== FALSE) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+
+    $connection->close();
+}
+
 function validateLogin($username,$password){
     
     $connection = connect();

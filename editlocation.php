@@ -1,7 +1,36 @@
 <?php
 session_start();
 require_once './database.php';
-$row = get_all_locations()
+    
+if(isset($_POST['edit'])){
+    $locationID = $_POST['locationID'];
+    $locationName = $_POST['locationname'];
+    $xCoord = $_POST['xcoordinate'];
+    $yCoord = $_POST['ycoordinate'];
+    $description = $_POST['description'];
+    // Min time is calculated assuming each word in description will take half a second to pronounce by the robot
+    // If odd number of words an extra half second is added to minimal time to be spent at a location
+    $minTime= ceil(0.5 * str_word_count($description));
+    
+    if(updateLocation($locationID, $locationName, $xCoord, $yCoord, $minTime, $description)){
+        echo "<script>alert(\"$locationName was successfully edited\");</script>";
+    }else{
+        echo "<script>alert(\"Error: $locationName was NOT changed\");</script>";
+    }
+}
+
+if(isset($_POST['delete'])){
+    $locationID = $_POST['locationID'];
+    $locationName = $_POST['locationname'];
+
+    if(deleteLocation($locationID)){
+        echo "<script>alert(\"$locationName was successfully deleted\");</script>";
+    }else{
+        echo "<script>alert(\"Error: $locationName was NOT deleted\");</script>";
+    }
+}
+
+$row = get_all_locations();
 ?>
 
 
@@ -29,6 +58,7 @@ $row = get_all_locations()
                     ?>
                 </select>
                 <a><input type = "submit" value="Show"></a>
+                <a href= "main.php"> Back </a>
             </div>
         </form>
  <?php       
