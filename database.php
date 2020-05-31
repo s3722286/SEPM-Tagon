@@ -175,6 +175,17 @@ function getLocationTime($id){
     return $types[0];
 }
 
+function getLocationName($id){
+    $connection = connect();
+    $sql = "SELECT locations.locationName FROM sempdatabase.locations WHERE locationID='$id'";
+    
+	$result = mysqli_query($connection, $sql);
+    $types = mysqli_fetch_array($result);
+    $connection->close();
+    //Need result will always be an array even if its only 1 result
+    return $types[0];
+}
+
 function validateLogin($username,$password){
     
     $connection = connect();
@@ -319,6 +330,18 @@ function changeTour($tourID, $name, $type, $locations, $minDuration){
     $sql="UPDATE sempdatabase.tours SET tourName = '$name', tourType= '$type', tourLocations = '$locations', minDuration = '$minDuration' WHERE tourID = '$tourID';";
     mysqli_query($connection, $sql);
     
+    $connection->close();
+}
+
+function getTour($id) {
+    $connection = connect();
+    // $userID = $_POST['userID'];
+    $query="SELECT * FROM sempdatabase.tours WHERE tourID = '$id'";
+    $result = mysqli_query($connection,$query);
+    $field = mysqli_fetch_array($result);
+
+    return $field;
+
     $connection->close();
 }
 
