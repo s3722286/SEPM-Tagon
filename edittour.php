@@ -6,7 +6,7 @@ if(!isset($_SESSION['username'])){
         header("Location: login.php");
         
 }
- echo var_dump($_POST);
+ //echo var_dump($_POST);
 if(isset($_POST['edittour'])){
     $tourID = $_POST['tourID']; 
     $newTourName = $_POST['newtourname'];
@@ -32,7 +32,7 @@ if(isset($_POST['edittour'])){
         }
 
     }
-    echo $locations;
+    //echo $locations;
     
     
     changeTour($tourID, $newTourName, $newTourType, $locations, $newMinDuration);
