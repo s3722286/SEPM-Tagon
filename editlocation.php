@@ -62,7 +62,6 @@ if(isset($_POST['delete'])){
     }
 }
 
-$row = get_all_locations();
 ?>
 
 
@@ -84,6 +83,7 @@ $row = get_all_locations();
                 <select name= "locations" size ="1">
                     <option value="" disabled selected hidden>Choose a location</option>
                     <?php
+                    $row = get_all_locations();
                         foreach($row as $next) {
                             echo "<option value='".$next['locationID']."'>".$next['locationName']."</option>";
                         }
